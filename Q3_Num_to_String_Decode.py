@@ -25,7 +25,7 @@ def decode(code,  result = [], invalid=False):
     if code[-1] == '0':
         if len(code) > 1 and (code[-2] == '1' or code[-2] == '2'):
             # eat two digits
-            decode(code[:-2], [code[-2:]] + result)
+            decode(code[:-2], result=[code[-2:]] + result)
         else:
             decode(code, result, invalid=True)
             exit()
@@ -33,7 +33,7 @@ def decode(code,  result = [], invalid=False):
     else:
         decode(code[:-1], [code[-1]] + result)
         if len(code) >= 2 and code[-2] != '0' and int(code[-2:]) >=1 and int(code[-2:]) <= 26:
-            decode(code[:-2], [code[-2:]] + result)
+            decode(code[:-2], result=[code[-2:]] + result)
 
 test = '810231523'
 decode(test)
