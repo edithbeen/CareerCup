@@ -5,10 +5,12 @@
 # does this code contains 0?
 # a list to store all the results
 results = []
-
+def f(x):
+    return chr(int(x) + 96)
 def decode(code,  result = []):
     # recursively eat one or two digit of the code
     if len(code) == 0:
+        # result_char = [f(x) for x in result]
         result_char = list(map(lambda x: chr(int(x) + 96), result))
         print(''.join(result_char))
         results.append(result)
@@ -29,6 +31,9 @@ def decode(code,  result = []):
 
 test = '20231523'
 decode(test)
+
+
+
 
 
 
