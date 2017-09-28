@@ -16,10 +16,20 @@ def number_to_letter(number):
 # now, the recursive function to convert letter to number
 def to_num(letters, current_num=0, current_position=0):
     if len(letters) == 0:
-        print(current_num)
         return current_num
     temp_num = letter_to_number(letters[-1])
-    to_num(letters[:-1], int(pow(26, current_position))*temp_num + current_num, current_position+1)
+    return to_num(letters[:-1], int(pow(26, current_position))*temp_num + current_num, current_position+1)
 
-print(to_num('AA'))
+print(to_num('DA'))
 
+# the recursive function to convert number to letter
+def to_letters(number, current_letter=''):
+    if number == 0:
+        return current_letter
+    temp_number = number%26
+    if(temp_number == 0):
+        temp_number = 26
+    temp_letter = number_to_letter(temp_number)
+    return to_letters(int((number-temp_number)/26), temp_letter+current_letter)
+
+print(to_letters(105))
