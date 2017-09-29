@@ -13,7 +13,7 @@ def arg_arr(array, size):
     for i in range(size):
         array[i] += size*(array[array[i]]%size)
     for i in range(size):
-        array[i] = int(array[i]/size)
+        array[i] = array[i]//size
     return array
 
 print(arg_arr(array, len(array)))
