@@ -13,7 +13,26 @@ def multi_others(array):
 array = [3, 3, 5, 7]
 print(multi_others(array))
 
-# list expression, easier eay
+# list expression, check
 ls = [prod(array[:i] + array[i+1:]) for i in range(len(array))]
 
+# we can also implement our own function of prod
+def prod(l):
+    result = 1
+    for item in l:
+        result *= item
+    return result
+
+# define a function to implemnt our own function of pow
+def pow(n, p):
+    result = n
+    if p == 0:
+        return 1
+    else:
+        for i in range(p-1):
+            result *= n
+
+    return result
+
+print(pow(2, 5))
 
