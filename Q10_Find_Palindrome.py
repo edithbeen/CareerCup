@@ -17,14 +17,19 @@ def isPalindrome(s):
 s = 'abccbaabccba'
 
 def countPalindrome(s):
-    patterns = [[] for i in range(len(s))]
+    patterns = {}
     count = 0
     for i in range(len(s)):
         for j in range(i+1,len(s)+1):
             if isPalindrome(s[i:j]):
-                if patterns[j-i-1] is None or s[i:j] not in patterns[j-i-1]:
-                    patterns[j-i-1] += [s[i:j]]
+                if patterns.get(j-i) is None:
+                    patterns[j-i] = [s[i:j]]
+                    count += 1
+                elif s[i:j] not in patterns[j-i]:
+                    patterns[j-i] += [s[i:j]]
                     count += 1
     print(patterns)
     return count
+
+print(countPalindrome(s))
 

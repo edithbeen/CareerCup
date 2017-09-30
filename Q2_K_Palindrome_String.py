@@ -3,3 +3,10 @@
 # S has at most 20,000 characters, 0<k<=30
 
 # This is too hard. I don't know the answer now
+
+l = range(1, 6)
+p = range(5, 10)
+d = dict(zip(l, p))
+
+print(d)
+print(d[1])
