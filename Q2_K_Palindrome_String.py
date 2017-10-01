@@ -2,11 +2,21 @@
 # given a string s and an integer k, write a function that returns Yes if it is a k-palindrome, otherwise No
 # S has at most 20,000 characters, 0<k<=30
 
-# This is too hard. I don't know the answer now
+# recursive method
 
-l = range(1, 6)
-p = range(5, 10)
-d = dict(zip(l, p))
+def is_K_Palindrome(s, k):
+    if k < 0:
+        return False
+    if len(s) == 0 or len(s) == 1:
+        return True
+    start_chr = s[0]
+    end_chr = s[-1]
+    if start_chr == end_chr:
+        return is_K_Palindrome(s[1:-1], k)
+    else:
+        return is_K_Palindrome(s[1:], k-1) or is_K_Palindrome(s[:-1], k-1)
 
-print(d)
-print(d[1])
+
+
+s = 'abbaabbsade'
+print(is_K_Palindrome(s, 5))
