@@ -19,4 +19,4 @@ def is_K_Palindrome(s, k):
 
 
 s = 'abbaabbsade'
-print(is_K_Palindrome(s, 5))
+print(is_K_Palindrome(s, 3))
