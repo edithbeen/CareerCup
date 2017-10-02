@@ -7,19 +7,15 @@ m = {'f':['M', '8'], 'b':['4', 'c', 't']}
 l = []
 
 def find_mapping(s):
-    l = []
+    l = None
     for i in range(len(s)):
         temp = [s[i]]
         if m.get(s[i]) is not None:
             temp += m[s[i]]
-        if len(l) == 0:
+        if l is None:
             l = temp
         else:
-            new_l = l
-            l = []
-            for x in new_l:
-                for y in temp:
-                    l += [x+y]
+            l = [x+y for x in l for y in temp]
     return l
 
 print(find_mapping(s))
