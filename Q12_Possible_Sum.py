@@ -30,8 +30,9 @@ def print_sums(coin, limit, current_s=0):
         result.append(current_s)
     if len(coin) > 0:
         for i in range(len(coin)):
-            print_sums(coin[:i] + coin[i+1:], limit, coin[i] + current_s)
+            print_sums(coin[i+1:], limit, coin[i] + current_s)
 
 result = []
 coin = [5, 10, 25, 25, 10, 50]
-print_sums(coin, 200)
+coin.sort()
+print_sums(coin, 50)

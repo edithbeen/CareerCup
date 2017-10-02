@@ -15,10 +15,13 @@ def gen_list(ts, current_list=[]):
         results.append(current_list)
         return
     for i in (range(1, ts+1)):
-        if len(current_list) == 0 or (i not in current_list and i > current_list[-1]):
+        # # sets with out duplicates are returned
+        # if len(current_list) == 0 or (i not in current_list and i > current_list[-1]):
+        # subsets are returned
+        if len(current_list) == 0 or i >= current_list[-1]:
             gen_list(ts-i, current_list + [i])
 
-gen_list(15)
+gen_list(10)
 print(results)
 
 # now let's make this question a little bit harder
@@ -35,11 +38,11 @@ def gen_list(ts, current_array, current_list=[]):
     elif len(current_array) == 0:
         return
     for i in range(1, ts+1):
-        if i in current_array:
-            if len(current_list) == 0 or i >= current_array[0]:
-                gen_list(ts-i, [x for x in current_array if x >= i][1:], current_list + [i])
+        if i in current_array and (len(current_list)== 0 or i >= current_list[-1]):
+            gen_list(ts-i, [x for x in current_array if x >= i and x <= ts][1:], current_list + [i])
 
-array = [1, 5, 8, 9, 2, 9, 7, 4, 5, 7]
+array = [5, 8, 2, 2, 9, 7, 4, 5, 7]
 array.sort()
-gen_list(8, array)
+print(array)
+gen_list(15, array)
 print(results)
