@@ -41,3 +41,14 @@ def find_pattern2(s, p=''):
             return find_pattern2(s[i:], p + str(count) + previous_chr)
 
 print(find_pattern2('332122444'))
+
+# now, we would like the input to be a integer only, for example, if the input is 4, we would like to have the output to be 111221
+
+def print_pattern(n):
+    output = '1'
+    print(output)
+    for i in range(n):
+        output = find_pattern(output)
+        print(output)
+
+print_pattern(5)
