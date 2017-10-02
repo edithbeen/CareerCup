@@ -39,7 +39,7 @@ def gen_list(ts, current_array, current_list=[]):
         return
     for i in range(1, ts+1):
         if i in current_array and (len(current_list)== 0 or i >= current_list[-1]):
-            gen_list(ts-i, [x for x in current_array if x >= i and x <= ts][1:], current_list + [i])
+            gen_list(ts-i, [x for x in current_array if x >= i][1:], current_list + [i])
 
 array = [5, 8, 2, 2, 9, 7, 4, 5, 7]
 array.sort()
