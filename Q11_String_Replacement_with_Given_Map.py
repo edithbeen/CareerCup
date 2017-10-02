@@ -4,8 +4,6 @@
 s = 'fab'
 m = {'f':['M', '8'], 'b':['4', 'c', 't']}
 
-l = []
-
 def find_mapping(s):
     l = None
     for i in range(len(s)):
