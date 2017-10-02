@@ -15,10 +15,10 @@ def gen_list(ts, current_list=[]):
         results.append(current_list)
         return
     for i in (range(1, ts+1)):
-        # # sets with out duplicates are returned
-        # if len(current_list) == 0 or (i not in current_list and i > current_list[-1]):
-        # subsets are returned
-        if len(current_list) == 0 or i >= current_list[-1]:
+        # sets with out duplicates are returned
+        if len(current_list) == 0 or (i not in current_list and i > current_list[-1]):
+        # # subsets are returned
+        # if len(current_list) == 0 or i >= current_list[-1]:
             gen_list(ts-i, current_list + [i])
 
 gen_list(10)
