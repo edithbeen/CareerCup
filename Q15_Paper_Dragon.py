@@ -23,14 +23,12 @@ print(find_vp(4))
 # binary tree method
 class Node:
     def __init__(self, data):
-        Node.left = None
-        Node.right = None
-        Node.data = data
+        self.left = None
+        self.right = None
+        self.data = data
 
     def insert(self, data):
-        if self.data is None:
-            return
-        else:
+        if self.data:
             if data < self.data:
                 if self.left is None:
                     self.left = Node(data)
@@ -41,6 +39,8 @@ class Node:
                     self.right = Node(data)
                 else:
                     self.right.insert(data)
+        else:
+            self.data = data
 
     def traverse(self):
         if self.data is None:
@@ -53,7 +53,8 @@ class Node:
 
 
 root = Node(8)
-print(root.data)
-root.left = Node(9)
-root.right = Node(6)
+
+for i in range(15):
+    root.insert(i)
+
 root.traverse()
