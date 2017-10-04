@@ -35,7 +35,9 @@ print(swap_count_unique(s))
 
 
 # now deal with string with duplicates
-# remember, if a character is the same as its adjacent character, it doesn't matter whether it swaps or not
+
+# remember, if there are n consecutive characters are the same, then, we can just treat them as one character
+
 def swap(s):
     l = []
     if len(s) == 0:
@@ -44,20 +46,16 @@ def swap(s):
         return [s]
     if s[0] == s[1]:
         j = 1
-        for i in range(2, len(s)):
+        for i in range(2, len(s) + 1):
             if s[i] != s[0]:
                 j = i
-            elif j != len(s):
-                next
-            else:
-                j = -1
-        if j == -1:
-            l = [s]
-        else:
-            l = [s[:j-1]+s[j]+s[j-1]+ x for x in swap(s[j+1:])] + [s[:j] + x for x in swap(s[j:])]
+                break
+        l = [s[:j-1] + x for x in swap(s[j-1:])]
     else:
-        l = [s[1]+s[0]+x for x in swap(s[2:])] + [s[0]+x for x in swap(s[1:])]
+        l = [s[1] + s[0] + x for x in swap(s[2:])] + [s[0] + x for x in swap(s[1:])]
     return l
+
+
 
 def swap_count(s):
     count = 0
@@ -65,19 +63,19 @@ def swap_count(s):
         return 0
     if len(s) == 1:
         return 1
-    if len(s) == 2:
-        if s[0] == s[1]:
-            return 1
-        else:
-            return 2
     if s[0] == s[1]:
-        count = swap_count(s[2:]) + swap_count(s[3:])
+        j = 1
+        for i in range(2, len(s) + 1):
+            if s[i] != s[0]:
+                j = i
+                break
+        count = swap_count(s[j-1:])
     else:
         count = swap_count(s[2:]) + swap_count(s[1:])
     return count
 
 
-s = '144666'
+s = '1446667'
 
 swap_l = swap(s)
 swap_set = set(swap_l)
