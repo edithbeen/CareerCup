@@ -63,19 +63,27 @@ def swap_count(s):
         return 0
     if len(s) == 1:
         return 1
+    if len(s) == 2:
+        if s[0] == s[1]:
+            return 1
+        else:
+            return 2
     if s[0] == s[1]:
         j = len(s)
         for i in range(2, len(s)):
             if s[i] != s[0]:
                 j = i
+                count = swap_count(s[j - 1:])
                 break
-        count = swap_count(s[j-1:])
+        if j == len(s):
+            count = 1
+
     else:
         count = swap_count(s[2:]) + swap_count(s[1:])
     return count
 
 
-s = '1446668'
+s = '177766777'
 
 swap_l = swap(s)
 swap_set = set(swap_l)
