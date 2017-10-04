@@ -27,34 +27,33 @@ class Node:
         self.right = None
         self.data = data
 
-    def insert(self, data):
-        if self.data:
-            if data < self.data:
-                if self.left is None:
-                    self.left = Node(data)
-                else:
-                    self.left.insert(data)
-            elif data > self.data:
-                if self.right is None:
-                    self.right = Node(data)
-                else:
-                    self.right.insert(data)
+    def insert(self):
+        if self.data is not None:
+            if self.left:
+                self.left.insert()
+            else:
+                self.left = Node(0)
+            if self.right:
+                self.right.insert()
+            else:
+                self.right = Node(1)
         else:
-            self.data = data
+            print('root node is invalid')
 
     def traverse(self):
+        l = []
         if self.data is None:
             return
         if self.left:
-            self.left.traverse()
-        print(self.data)
+            l = l + self.left.traverse()
+        l = l + [self.data]
         if self.right:
-            self.right.traverse()
+            l = l + self.right.traverse()
+        return l
 
 
-root = Node(8)
+root = Node(0)
+for i in range(3):
+    root.insert()
 
-for i in range(15):
-    root.insert(i)
-
-root.traverse()
+print(root.traverse())
