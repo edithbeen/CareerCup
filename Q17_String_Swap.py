@@ -83,7 +83,7 @@ def swap_count(s):
     return count
 
 
-s = '177766777'
+s = '1777667577'
 
 swap_l = swap(s)
 swap_set = set(swap_l)
