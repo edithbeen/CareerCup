@@ -33,14 +33,23 @@ def isMatch(s, p):
         if first_char != '*':
             return False
         else:
-            return isMatch(s, p[1:])
+            for i in range(1, len(p)):
+                if p[i] != '*':
+                    return False
+            return True
     if first_char == '?':
         return isMatch(s[1:], p[1:])
     elif first_char != '*':
         return s.startswith(p[0]) and isMatch(s[1:], p[1:])
     else:
+        for k in range(1, len(p)):
+            if p[k] != '*':
+                p = p[k:]
+                break
+            if k == len(p) - 1:
+                return True
         for i in range(len(s)):
-            if isMatch(s[i:], p[1:]):
+            if isMatch(s[i:], p):
                 return True
         return False
 
